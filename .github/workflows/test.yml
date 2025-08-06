@@ -1,5 +1,4 @@
-name: WebDriverIO Tests with Allure Report
-
+name: WebDriverIO Tests
 on:
   push:
     branches: [ main, develop ]
@@ -23,21 +22,17 @@ jobs:
         
     - name: Install dependencies
       run: npm ci
-      
-    - name: Install Chrome browser
-      uses: browser-actions/setup-chrome@v1
-      with:
-        chrome-version: stable
+
         
     - name: Run WebDriverIO tests
       run: npm run test
       continue-on-error: true
 
         
-    - name: Upload test screenshots
+    - name: Upload allure test results
       uses: actions/upload-artifact@v4
       if: failure()
       with:
-        name: test-screenshots
-        path: '**/*.png'
+        name: allure-results
+        path: allure-results
         retention-days: 30
