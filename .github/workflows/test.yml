@@ -1,4 +1,4 @@
-name: WebDriverIO Tests with Allure Report
+name: WebDriverIO Tests
 
 on:
   push:
@@ -41,3 +41,4 @@ jobs:
         name: test-screenshots
         path: '**/*.png'
         retention-days: 30
+
